@@ -5,32 +5,32 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Paths } from "./consts/paths";
-import { type LoginFormInput, loginFormSchema } from "./schemas/authSchema";
+import { type SignUpFormInput, signUpFormSchema } from "../schemas/authSchema";
 
-export const LoginForm = () => {
+export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormInput>({
+  } = useForm<SignUpFormInput>({
     defaultValues: {
       email: "",
       password: "",
+      passwordForConfirm: "",
     },
-    resolver: zodResolver(loginFormSchema),
+    resolver: zodResolver(signUpFormSchema),
     mode: "onSubmit",
     reValidateMode: "onBlur",
   });
 
-  const onSubmit = (data: LoginFormInput) => {
+  const onSubmit = (data: SignUpFormInput) => {
     console.log(data);
   };
 
   return (
     <div className="p-8 flex flex-col gap-8 bg-card border border-border rounded-xl">
       <div className="flex justify-center">
-        <h1 className="text-4xl font-bold">ログイン</h1>
+        <h1 className="text-4xl font-bold">新規登録</h1>
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -61,12 +61,26 @@ export const LoginForm = () => {
               <div className="errorMessage">{errors.password?.message}</div>
             </div>
           </div>
+          <div className="flex items-center">
+            <div className="w-40 font-bold">パスワード (確認用)</div>
+            <div className="flex flex-col gap-1">
+              <Input
+                type="password"
+                placeholder="パスワード (確認用) を入力してください"
+                {...register("passwordForConfirm")}
+                className="w-100"
+              />
+              <div className="errorMessage">
+                {errors.passwordForConfirm?.message}
+              </div>
+            </div>
+          </div>
         </div>
         <div className="flex gap-4 justify-center">
           <Button asChild>
-            <Link href={Paths.SIGN_UP}>新規登録</Link>
+            <Link href="/">ログイン画面へ戻る</Link>
           </Button>
-          <Button type="submit">ログイン</Button>
+          <Button type="submit">アカウント登録</Button>
         </div>
       </form>
     </div>
