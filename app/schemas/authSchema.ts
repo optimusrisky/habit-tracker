@@ -4,7 +4,7 @@ import { ERRORS } from "../consts/errorMessages";
 /** ログインフォーム */
 export const loginFormSchema = z.object({
   email: z.email({
-    error: (iss) => (iss.input === "" ? ERRORS.REQUIRED : ERRORS.INVALID_ERROR),
+    error: (iss) => (iss.input === "" ? ERRORS.REQUIRED : ERRORS.INVALID_EMAIL),
   }),
   password: z
     .string({

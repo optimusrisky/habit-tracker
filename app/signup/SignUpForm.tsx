@@ -24,6 +24,7 @@ export const SignUpForm = () => {
   });
 
   const onSubmit = (data: SignUpFormInput) => {
+    // ログイン処理実装
     console.log(data);
   };
 
@@ -44,7 +45,7 @@ export const SignUpForm = () => {
                 type="email"
                 placeholder="メールアドレスを入力してください"
                 {...register("email")}
-                className="w-100"
+                className="w-80"
               />
               <div className="errorMessage">{errors.email?.message}</div>
             </div>
@@ -56,7 +57,7 @@ export const SignUpForm = () => {
                 type="password"
                 placeholder="パスワードを入力してください"
                 {...register("password")}
-                className="w-100"
+                className="w-80"
               />
               <div className="errorMessage">{errors.password?.message}</div>
             </div>
@@ -68,7 +69,7 @@ export const SignUpForm = () => {
                 type="password"
                 placeholder="パスワード (確認用) を入力してください"
                 {...register("passwordForConfirm")}
-                className="w-100"
+                className="w-80"
               />
               <div className="errorMessage">
                 {errors.passwordForConfirm?.message}

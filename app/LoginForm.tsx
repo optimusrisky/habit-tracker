@@ -44,7 +44,7 @@ export const LoginForm = () => {
                 type="email"
                 placeholder="メールアドレスを入力してください"
                 {...register("email")}
-                className="w-100"
+                className="w-80"
               />
               <div className="errorMessage">{errors.email?.message}</div>
             </div>
@@ -56,7 +56,7 @@ export const LoginForm = () => {
                 type="password"
                 placeholder="パスワードを入力してください"
                 {...register("password")}
-                className="w-100"
+                className="w-80"
               />
               <div className="errorMessage">{errors.password?.message}</div>
             </div>
