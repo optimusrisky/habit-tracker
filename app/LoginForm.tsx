@@ -2,13 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Paths } from "./consts/paths";
-import { type LoginFormInput, loginFormSchema } from "./schemas/authSchema";
+import { Paths } from "../consts/paths";
+import { type LoginFormInput, loginFormSchema } from "../schemas/authSchema";
 
 export const LoginForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -25,6 +27,7 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormInput) => {
     console.log(data);
+    router.push(Paths.DASHBOARD);
   };
 
   return (

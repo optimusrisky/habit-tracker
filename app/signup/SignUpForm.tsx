@@ -5,7 +5,10 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { type SignUpFormInput, signUpFormSchema } from "../schemas/authSchema";
+import {
+  type SignUpFormInput,
+  signUpFormSchema,
+} from "../../schemas/authSchema";
 
 export const SignUpForm = () => {
   const {
