@@ -1,15 +1,15 @@
 import { z } from "zod";
-import { ERROR } from "../consts/errorMessages";
+import { ERRORS } from "../consts/errorMessages";
 
 /** ログインフォーム */
 export const loginFormSchema = z.object({
   email: z.email({
-    error: (iss) => (iss.input === "" ? ERROR.REQUIRED : ERROR.INVALID_ERROR),
+    error: (iss) => (iss.input === "" ? ERRORS.REQUIRED : ERRORS.INVALID_ERROR),
   }),
   password: z
     .string({
-      error: ERROR.INVALID_ERROR,
+      error: ERRORS.INVALID_ERROR,
     })
-    .min(1, ERROR.REQUIRED),
+    .min(1, ERRORS.REQUIRED),
 });
 export type LoginFormInput = z.infer<typeof loginFormSchema>;
