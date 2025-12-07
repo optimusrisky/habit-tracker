@@ -8,7 +8,7 @@ export default function AuthLayout({
   return (
     <div className="h-full">
       <Header />
-      <div className="p-20 h-full">{children}</div>
+      <div className="py-10 px-20 h-full">{children}</div>
     </div>
   );
 }

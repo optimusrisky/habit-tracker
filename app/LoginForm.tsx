@@ -31,7 +31,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="p-8 flex flex-col gap-8 bg-card border border-border rounded-xl">
+    <div className="p-8 flex flex-col gap-8 bg-card border-2 border-border rounded-xl">
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold">ログイン</h1>
       </div>
