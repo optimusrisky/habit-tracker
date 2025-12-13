@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
 import { Paths } from "@/consts/paths";
 import type { Habit } from "@/types/type";
 
@@ -36,6 +37,14 @@ export const Dashboard = ({ habits }: Props) => {
     } else return [];
   }, [date, habits]);
 
+  /** 達成した習慣 */
+  const completedHabits = dateFilteredHabits.filter(
+    (habit) => habit.isCompleted
+  );
+  /** 当日の習慣の達成率 */
+  const progressOfHabits =
+    (completedHabits.length / dateFilteredHabits.length) * 100;
+
   /** チェック時処理 **/
   const handleCheck = () => {
     console.log(dateFilteredHabits);
@@ -46,8 +55,14 @@ export const Dashboard = ({ habits }: Props) => {
     <div className="flex gap-6">
       <div className="bg-secondary flex flex-col gap-6 flex-1 border-2 rounded-xl p-6">
         <h2 className="text-3xl font-bold">習慣リスト</h2>
-        <div>
-          {dateFilteredHabits.length ? (
+        {dateFilteredHabits.length ? (
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <p className="font-bold">
+                達成度: {Math.round(progressOfHabits)}%
+              </p>
+              <Progress value={progressOfHabits} className="h-4" />
+            </div>
             <ul className="flex flex-col gap-4">
               {dateFilteredHabits.map((habit) => (
                 <Label
@@ -65,10 +80,10 @@ export const Dashboard = ({ habits }: Props) => {
                 </Label>
               ))}
             </ul>
-          ) : (
-            <div>登録された習慣はありません</div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div>登録された習慣はありません</div>
+        )}
       </div>
       <Calendar
         mode="single"
