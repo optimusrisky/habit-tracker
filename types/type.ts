@@ -2,6 +2,14 @@
 export interface Habit {
   id: number;
   title: string;
-  isCompleted: boolean;
+  createdAt: string;
+  archivedAt?: string;
+}
+
+/** 習慣ログ */
+export interface HabitLog {
+  id: number;
+  habitId: number;
+  date: string;
   createdAt: string;
 }
