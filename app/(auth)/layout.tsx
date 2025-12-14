@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Header } from "@/components/Header";
 
 export default function AuthLayout({
@@ -8,7 +9,9 @@ export default function AuthLayout({
   return (
     <div className="h-full">
       <Header />
-      <div className="py-10 px-20 h-full">{children}</div>
+      <Suspense>
+        <div className="py-10 px-20 h-full">{children}</div>
+      </Suspense>
     </div>
   );
 }

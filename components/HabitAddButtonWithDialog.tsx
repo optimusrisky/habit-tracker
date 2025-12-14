@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -19,8 +20,10 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
+/** タスク追加ダイアログ */
 export const HabitAddButtonWithDialog = () => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -41,6 +44,7 @@ export const HabitAddButtonWithDialog = () => {
     console.log(input);
     toast.success(`習慣 "${input.title}" を追加しました`);
     setOpen(false);
+    router.refresh();
     reset();
   };
 
